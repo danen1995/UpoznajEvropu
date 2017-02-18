@@ -68,6 +68,7 @@ public class Pocetna extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				kviz.setVisible(true);
 				kviz.setLocationRelativeTo(null);
+				kviz.nasumicnoPitanje();
 				
 			}
 		});

@@ -1,29 +1,50 @@
 package kviz;
 
+import java.io.Serializable;
+
 public class Pitanje {
-	public Pitanje(String pitanje, String odgovor) {
+	private String pitanje;
+	String [] ponudjeniOdgovori;
+	private String tacanOdgovor;
+	
+	
+	public Pitanje(String pitanje, String[] ponudjeniOdgovori, String tacanOdgovor) {
 		super();
 		this.pitanje = pitanje;
-		this.odgovor = odgovor;
+		this.ponudjeniOdgovori = ponudjeniOdgovori;
+		this.tacanOdgovor = tacanOdgovor;
 	}
-	private String pitanje;
-	private String odgovor;
-	
+
+
+	public String[] getPonudjeniOdgovori() {
+		return ponudjeniOdgovori;
+	}
+
+
+	public void setPonudjeniOdgovori(String[] ponudjeniOdgovori) {
+		this.ponudjeniOdgovori = ponudjeniOdgovori;
+	}
+
+
+	public String getTacanOdgovor() {
+		return tacanOdgovor;
+	}
+
+
+	public void setTacanOdgovor(String tacanOdgovor) {
+		this.tacanOdgovor = tacanOdgovor;
+	}
+
+
 	public Pitanje() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 
-
-	public String getOdgovor() {
-		return odgovor;
-	}
 	public String getPitanje() {
 		return pitanje;
 	}
-	public void setOdgovor(String odgovor) {
-		this.odgovor = odgovor;
-	}
+
 	public void setPitanje(String pitanje) {
 		this.pitanje = pitanje;
 	}

@@ -2,6 +2,12 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Random;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -16,16 +22,16 @@ public class GUIKontroler extends JFrame {
 
 	private JPanel contentPane;
 	private static Pocetna glavniProzor;
-	private static GrupaPitanja grupa;
+	public static GrupaPitanja grupa;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
+					grupa = new GrupaPitanja();
 					glavniProzor = new Pocetna();
 					glavniProzor.setVisible(true);
 					glavniProzor.setLocationRelativeTo(null);
@@ -36,7 +42,54 @@ public class GUIKontroler extends JFrame {
 				}
 			}
 		});
+		ucitajTXTFajl();
 		
+		
+	}
+
+	private static void ucitajTXTFajl() throws IOException {
+		BufferedReader reader = null;
+        reader = new BufferedReader(new FileReader("pitanja.txt"));
+
+        String line;
+       
+
+        Scanner scan = new Scanner(System.in);
+
+        String questionNum = "";
+        String question = "", choiceA = "", choiceB = "", choiceC = "", choiceD = "", answer = "";
+        while((line = reader.readLine()) != null){
+
+            if(line.contains("?")){
+                question = line;
+                continue;
+            }
+
+            if(line.contains("a)")){
+                choiceA = line;
+                continue;
+            }
+
+            if(line.contains("b)")){
+                choiceB = line;
+                continue;
+            }
+
+            if(line.contains("c)")){
+                choiceC = line;
+                continue;
+            }
+
+            if(line.contains("d)")){
+                choiceD = line;
+                continue;
+            }
+                
+                answer = line;
+                String [] ponudjeniOdgovori = {choiceA, choiceB, choiceC, choiceD};
+                Pitanje pitanje = new Pitanje(question, ponudjeniOdgovori, answer);
+                grupa.unesiPitanje(pitanje);
+        }
 		
 	}
 
@@ -60,23 +113,13 @@ public class GUIKontroler extends JFrame {
 		
 		}
 	}
-	public static void unesiPitanje(String pitanje,String odgovor){
-		try{
-			Pitanje p = new Pitanje(pitanje, odgovor);
-			grupa.unesiPitanje(p);
-			GUIKontroler.sacuvajUFajl();
-			
-		}catch(Exception e1){
-			JOptionPane.showMessageDialog(null, "Proveri formu "+ e1.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
-		}
-		
+	public static LinkedList<Pitanje> vratiPitanja(){
+		return grupa.getPitanja();
 	}
-	public static void sacuvajUFajl(){
-		try {
-			grupa.upisiUFajl();
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
-		}
+
+	public static int nasumicniRedniBrojPitanja() {
+	    Random rand = new Random();
+	    int randomNum = rand.nextInt((grupa.getPitanja().size()-1 - 0) + 1) + 0;
+	    return randomNum;
 	}
-	
 }

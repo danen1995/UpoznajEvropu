@@ -4,9 +4,10 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class GrupaPitanja {
-	 private LinkedList<Pitanje> pitanja = new LinkedList<>();
+	private LinkedList<Pitanje> pitanja = new LinkedList<>();
 
 	@Override
 	public String toString() {
@@ -23,18 +24,10 @@ public class GrupaPitanja {
 	
 	public void unesiPitanje(Pitanje pitanje){
 		pitanja.add(pitanje);
-		upisiUFajl();
+	}
+	public int ukupanBrojPitanja(){
+		return pitanja.size();
 	}
 
-	public void upisiUFajl() {
-			try {
-				ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("pitanja.txt")));
-					out.writeObject(pitanja);
-				out.close();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				System.out.println(e.getMessage());
-			}
-		
-	}
+
 }
