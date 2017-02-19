@@ -69,8 +69,11 @@ public class Pocetna extends JFrame {
 				kviz.setVisible(true);
 				kviz.setLocationRelativeTo(null);
 				kviz.nasumicnoPitanje();
+				kviz.osveziRbrPitanja();
 				
 			}
+
+	
 		});
 		button.setIcon(new ImageIcon(Pocetna.class.getResource("/slike/d509520b.png")));
 		button.setPreferredSize(new Dimension(128, 150));
