@@ -144,8 +144,10 @@ public class Poljska extends JFrame {
 		
 		panel3 = new JPanel();
 		parentPanel.add(panel3, "name_519148990046526");
+		panel3.setLayout(null);
 		
 		label_1 = new JLabel("");
+		label_1.setBounds(0, -16, 500, 300);
 		label_1.setIcon(new ImageIcon(Poljska.class.getResource("/slike/zastave/poljska.gif")));
 		panel3.add(label_1);
 	}

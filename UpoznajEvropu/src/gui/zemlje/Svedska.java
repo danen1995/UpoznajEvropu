@@ -36,6 +36,7 @@ public class Svedska extends JFrame {
 	private JLabel lblDsfsdfsdfsdfsf;
 	private JButton btnNazad;
 	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
 
 	/**
 	 * Create the frame.
@@ -144,10 +145,14 @@ public class Svedska extends JFrame {
 		lblDsfsdfsdfsdfsf.setIcon(new ImageIcon(Svedska.class.getResource("/gradovi/stokholm.png")));
 		panel2.add(lblDsfsdfsdfsdfsf);
 		
+		lblNewLabel_1 = new JLabel("Glavni grad Svedske je Stokholm.");
+		lblNewLabel_1.setBounds(27, 25, 427, 355);
+		panel2.add(lblNewLabel_1);
+		
 		panel3 = new JPanel();
 		parentPanel.add(panel3, "name_519148990046526");
 		
-		lblNewLabel = new JLabel("New label");
+		lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Svedska.class.getResource("/slike/zastave/svedska.jpg")));
 		panel3.add(lblNewLabel);
 	}

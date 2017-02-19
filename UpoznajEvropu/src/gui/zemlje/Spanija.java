@@ -146,7 +146,7 @@ public class Spanija extends JFrame {
 		panel3 = new JPanel();
 		parentPanel.add(panel3, "name_519148990046526");
 		
-		lblNewLabel = new JLabel("New label");
+		lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Spanija.class.getResource("/slike/zastave/spanija.png")));
 		panel3.add(lblNewLabel);
 	}

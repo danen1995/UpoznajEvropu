@@ -34,8 +34,8 @@ public class Norveska extends JFrame {
 	private JPanel panel3;
 	private JLabel label;
 	private JLabel lblDsfsdfsdfsdfsf;
-	private JButton btnSdfsfd;
 	private JButton btnNazad;
+	private JLabel label_1;
 
 	/**
 	 * Create the frame.
@@ -146,8 +146,9 @@ public class Norveska extends JFrame {
 		panel3 = new JPanel();
 		parentPanel.add(panel3, "name_519148990046526");
 		
-		btnSdfsfd = new JButton("sdfsfd");
-		panel3.add(btnSdfsfd);
+		label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(Norveska.class.getResource("/slike/zastave/norveska.png")));
+		panel3.add(label_1);
 	}
 	
 

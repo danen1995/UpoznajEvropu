@@ -32,6 +32,10 @@ public class Kviz extends JFrame {
 	private JLabel lblRezultat;
 	private JLabel lblrbrPitanja;
 	private JLabel label;
+	private JTextField textField;
+	private JLabel lblCestitamo;
+	JPanel panel_2;
+	JPanel panel_3;
 	public Kviz() {
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -53,18 +57,6 @@ public class Kviz extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.SOUTH);
 		
-		JButton btnNewButton = new JButton("Preskoci");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-					rbrPitanja++;
-					osveziRbrPitanja();
-		 			nasumicnoPitanje();
-		 			osveziRezultat();
-		 			
-			}
-		});
-		panel.add(btnNewButton);
-		
 		lblBrojPoena = new JLabel("Broj poena:");
 		panel.add(lblBrojPoena);
 		
@@ -75,7 +67,7 @@ public class Kviz extends JFrame {
 		contentPane.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new CardLayout(0, 0));
 		
-		JPanel panel_3 = new JPanel();
+		 panel_3 = new JPanel();
 		panel_1.add(panel_3, "name_536321232942352");
 		panel_3.setLayout(null);
 		
@@ -89,19 +81,29 @@ public class Kviz extends JFrame {
 		 		if(btna.getText().contains(tacanOdgovor)){
 		 			rezultat++;
 		 			rbrPitanja++;
-		 			osveziRbrPitanja();
 		 			osveziRezultat();
+					if(lblPitanje.getText()=="11"){
+						upisiSe();
+						return;
+					}
+		 			osveziRbrPitanja();
 		 			nasumicnoPitanje();
 		 		}else {
 		 			rezultat--;
 		 			rbrPitanja++;
-		 			osveziRbrPitanja();
 		 			osveziRezultat();
+		 			
+		 			if(lblPitanje.getText()=="11"){
+						upisiSe();
+						return;
+					}
+		 			osveziRbrPitanja();
 		 			nasumicnoPitanje();
 		 		}
+		 		
 		 	}
 		 });
-		btna.setBounds(50, 96, 132, 23);
+		btna.setBounds(50, 90, 132, 23);
 		panel_3.add(btna);
 		
 		 btnb = new JButton("");
@@ -110,19 +112,28 @@ public class Kviz extends JFrame {
 		 		if(btnb.getText().contains(tacanOdgovor)){
 		 			rezultat++;
 		 			rbrPitanja++;
-		 			osveziRbrPitanja();
 		 			osveziRezultat();
+					if(lblPitanje.getText()=="11"){
+						upisiSe();
+						return;
+					}
+		 			osveziRbrPitanja();
 		 			nasumicnoPitanje();
 		 		}else {
 		 			rezultat--;
 		 			rbrPitanja++;
-		 			osveziRbrPitanja();
 		 			osveziRezultat();
+		 			
+		 			if(lblPitanje.getText()=="11"){
+						upisiSe();
+						return;
+					}
+		 			osveziRbrPitanja();
 		 			nasumicnoPitanje();
 		 		}
 		 	}
 		 });
-		btnb.setBounds(244, 96, 132, 23);
+		btnb.setBounds(244, 90, 132, 23);
 		panel_3.add(btnb);
 		
 		 btnc = new JButton("");
@@ -131,19 +142,28 @@ public class Kviz extends JFrame {
 		 		if(btnc.getText().contains(tacanOdgovor)){
 		 			rezultat++;
 		 			rbrPitanja++;
-		 			osveziRbrPitanja();
 		 			osveziRezultat();
+					if(lblPitanje.getText()=="11"){
+						upisiSe();
+						return;
+					}
+		 			osveziRbrPitanja();
 		 			nasumicnoPitanje();
 		 		}else {
 		 			rezultat--;
 		 			rbrPitanja++;
-		 			osveziRbrPitanja();
 		 			osveziRezultat();
+		 			
+		 			if(lblPitanje.getText()=="11"){
+						upisiSe();
+						return;
+					}
+		 			osveziRbrPitanja();
 		 			nasumicnoPitanje();
 		 		}
 		 	}
 		 });
-		btnc.setBounds(50, 155, 132, 23);
+		btnc.setBounds(50, 135, 132, 23);
 		panel_3.add(btnc);
 		
 		 btnd = new JButton("");
@@ -152,20 +172,50 @@ public class Kviz extends JFrame {
 		 		if(btnd.getText().contains(tacanOdgovor)){
 		 			rezultat++;
 		 			rbrPitanja++;
-		 			osveziRbrPitanja();
 		 			osveziRezultat();
+					if(lblPitanje.getText()=="11"){
+						upisiSe();
+						return;
+					}
+		 			osveziRbrPitanja();
 		 			nasumicnoPitanje();
 		 		}else {
 		 			rezultat--;
 		 			rbrPitanja++;
-		 			osveziRbrPitanja();
 		 			osveziRezultat();
+		 			
+		 			if(lblPitanje.getText()=="11"){
+						upisiSe();
+						return;
+					}
+		 			osveziRbrPitanja();
 		 			nasumicnoPitanje();
 		 		}
 		 	}
+
+		
 		 });
-		btnd.setBounds(244, 155, 132, 23);
+		btnd.setBounds(244, 135, 132, 23);
 		panel_3.add(btnd);
+		
+		JButton btnNewButton = new JButton("Preskoci");
+		btnNewButton.setBounds(279, 181, 135, 23);
+		panel_3.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					rbrPitanja++;
+					osveziRezultat();
+		 			if(lblPitanje.getText()=="11"){
+						upisiSe();
+						return;
+					}
+		 			osveziRbrPitanja();
+		 			nasumicnoPitanje();
+		 			
+			}
+
+	
+		});
 		
 		lblrbrPitanja = new JLabel("");
 		lblrbrPitanja.setFont(new Font("Tahoma", Font.PLAIN, 22));
@@ -176,6 +226,29 @@ public class Kviz extends JFrame {
 		label.setIcon(new ImageIcon(Kviz.class.getResource("/slike/pozadinaKviza.png")));
 		label.setBounds(0, 0, 434, 229);
 		panel_3.add(label);
+		
+		 panel_2 = new JPanel();
+		panel_1.add(panel_2, "name_169688616700768");
+		panel_2.setLayout(null);
+		
+		lblCestitamo = new JLabel("Cestitamo!");
+		lblCestitamo.setFont(new Font("Bradley Hand ITC", Font.BOLD, 34));
+		lblCestitamo.setBounds(136, 11, 200, 51);
+		panel_2.add(lblCestitamo);
+		
+		JLabel lblUnesiteIme = new JLabel("Unesite ime : ");
+		lblUnesiteIme.setBounds(119, 98, 76, 14);
+		panel_2.add(lblUnesiteIme);
+		
+		textField = new JTextField();
+		textField.setBounds(205, 95, 146, 20);
+		panel_2.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Kviz.class.getResource("/slike/16809584_10203262022188293_1877923371_n.png")));
+		lblNewLabel.setBounds(0, -31, 424, 258);
+		panel_2.add(lblNewLabel);
 		
 	}
 	public void nasumicnoPitanje(){
@@ -192,6 +265,11 @@ public class Kviz extends JFrame {
 	}
 	public void osveziRbrPitanja() {
 		lblrbrPitanja.setText(Integer.toString(rbrPitanja));
+		
+	}
+	public void upisiSe() {
+		panel_2.setVisible(true);
+		panel_3.setVisible(false);
 		
 	}
 }
