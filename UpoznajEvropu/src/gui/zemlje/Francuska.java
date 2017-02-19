@@ -18,6 +18,8 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
+import java.awt.Font;
+
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
@@ -36,6 +38,8 @@ public class Francuska extends JFrame {
 	private JLabel lblDsfsdfsdfsdfsf;
 	private JButton btnNazad;
 	private JLabel label_1;
+	private JLabel lblGrad;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Create the frame.
@@ -90,7 +94,7 @@ public class Francuska extends JFrame {
 		btn1.setIcon(new ImageIcon(Srbija.class.getResource("/slike/one.png")));
 		panel.add(btn1);
 		btn1.setEnabled(false);
-		 btn2 = new JButton("Glavni grad");
+		 btn2 = new JButton("Zanimljivosti");
 		 btn2.setBackground(Color.WHITE);
 		btn2.setIcon(new ImageIcon(Srbija.class.getResource("/slike/two.png")));
 		btn2.addActionListener(new ActionListener() {
@@ -129,6 +133,11 @@ public class Francuska extends JFrame {
 		parentPanel.add(panel1, "name_519136036181722");
 		panel1.setLayout(null);
 		
+		lblGrad = new JLabel("Glavni grad Francuske je Pariz.");
+		lblGrad.setFont(new Font("Bradley Hand ITC", Font.BOLD, 26));
+		lblGrad.setBounds(10, 23, 454, 63);
+		panel1.add(lblGrad);
+		
 		label = new JLabel("");
 		label.setBounds(0, -13, 521, 465);
 		label.setIcon(new ImageIcon(Francuska.class.getResource("/zemlje/Francuska.png")));
@@ -137,6 +146,11 @@ public class Francuska extends JFrame {
 		panel2 = new JPanel();
 		parentPanel.add(panel2, "name_519142343888746");
 		panel2.setLayout(null);
+		
+		lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(Francuska.class.getResource("/slike/zanimljivosti/Francuska.png")));
+		lblNewLabel.setBounds(0, 0, 474, 418);
+		panel2.add(lblNewLabel);
 		
 		lblDsfsdfsdfsdfsf = new JLabel("");
 		lblDsfsdfsdfsdfsf.setBounds(-13, -35, 500, 490);

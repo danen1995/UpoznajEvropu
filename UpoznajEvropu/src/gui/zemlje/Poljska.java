@@ -20,6 +20,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
+import java.awt.Font;
+
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 
@@ -36,6 +38,8 @@ public class Poljska extends JFrame {
 	private JLabel lblDsfsdfsdfsdfsf;
 	private JButton btnNazad;
 	private JLabel label_1;
+	private JLabel lblGrad;
+	private JLabel label_2;
 
 	/**
 	 * Create the frame.
@@ -90,7 +94,7 @@ public class Poljska extends JFrame {
 		btn1.setIcon(new ImageIcon(Srbija.class.getResource("/slike/one.png")));
 		panel.add(btn1);
 		btn1.setEnabled(false);
-		 btn2 = new JButton("Glavni grad");
+		 btn2 = new JButton("Zanimljivosti");
 		 btn2.setBackground(Color.WHITE);
 		btn2.setIcon(new ImageIcon(Srbija.class.getResource("/slike/two.png")));
 		btn2.addActionListener(new ActionListener() {
@@ -128,6 +132,11 @@ public class Poljska extends JFrame {
 		parentPanel.add(panel1, "name_519136036181722");
 		panel1.setLayout(null);
 		
+		lblGrad = new JLabel("Glavni grad Poljske je Varsava.");
+		lblGrad.setFont(new Font("Bradley Hand ITC", Font.BOLD, 26));
+		lblGrad.setBounds(10, 23, 454, 63);
+		panel1.add(lblGrad);
+		
 		label = new JLabel("");
 		label.setBounds(-13, -14, 500, 469);
 		label.setIcon(new ImageIcon(Poljska.class.getResource("/zemlje/Poljska.png")));
@@ -136,6 +145,11 @@ public class Poljska extends JFrame {
 		panel2 = new JPanel();
 		parentPanel.add(panel2, "name_519142343888746");
 		panel2.setLayout(null);
+		
+		label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(Poljska.class.getResource("/slike/zanimljivosti/Poljska.png")));
+		label_2.setBounds(0, 0, 474, 418);
+		panel2.add(label_2);
 		
 		lblDsfsdfsdfsdfsf = new JLabel("");
 		lblDsfsdfsdfsdfsf.setBounds(-13, -16, 500, 471);

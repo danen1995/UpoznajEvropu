@@ -36,6 +36,7 @@ public class Kviz extends JFrame {
 	private JLabel lblCestitamo;
 	JPanel panel_2;
 	JPanel panel_3;
+//	RangLista rangLista = new RangLista();
 	public Kviz() {
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -44,8 +45,11 @@ public class Kviz extends JFrame {
 				rbrPitanja = 1;
 				osveziRezultat();
 				osveziRbrPitanja();
+				panel_3.setVisible(true);
+				panel_2.setVisible(false);
 			}
 		});
+		
 		setTitle("Kviz");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -82,7 +86,7 @@ public class Kviz extends JFrame {
 		 			rezultat++;
 		 			rbrPitanja++;
 		 			osveziRezultat();
-					if(lblPitanje.getText()=="11"){
+					if(rbrPitanja==11){
 						upisiSe();
 						return;
 					}
@@ -93,7 +97,7 @@ public class Kviz extends JFrame {
 		 			rbrPitanja++;
 		 			osveziRezultat();
 		 			
-		 			if(lblPitanje.getText()=="11"){
+		 			if(rbrPitanja==11){
 						upisiSe();
 						return;
 					}
@@ -113,7 +117,7 @@ public class Kviz extends JFrame {
 		 			rezultat++;
 		 			rbrPitanja++;
 		 			osveziRezultat();
-					if(lblPitanje.getText()=="11"){
+					if(rbrPitanja==11){
 						upisiSe();
 						return;
 					}
@@ -124,7 +128,7 @@ public class Kviz extends JFrame {
 		 			rbrPitanja++;
 		 			osveziRezultat();
 		 			
-		 			if(lblPitanje.getText()=="11"){
+		 			if(rbrPitanja==11){
 						upisiSe();
 						return;
 					}
@@ -143,7 +147,7 @@ public class Kviz extends JFrame {
 		 			rezultat++;
 		 			rbrPitanja++;
 		 			osveziRezultat();
-					if(lblPitanje.getText()=="11"){
+					if(rbrPitanja==11){
 						upisiSe();
 						return;
 					}
@@ -154,7 +158,7 @@ public class Kviz extends JFrame {
 		 			rbrPitanja++;
 		 			osveziRezultat();
 		 			
-		 			if(lblPitanje.getText()=="11"){
+		 			if(rbrPitanja==11){
 						upisiSe();
 						return;
 					}
@@ -173,7 +177,7 @@ public class Kviz extends JFrame {
 		 			rezultat++;
 		 			rbrPitanja++;
 		 			osveziRezultat();
-					if(lblPitanje.getText()=="11"){
+					if(rbrPitanja==11){
 						upisiSe();
 						return;
 					}
@@ -184,7 +188,7 @@ public class Kviz extends JFrame {
 		 			rbrPitanja++;
 		 			osveziRezultat();
 		 			
-		 			if(lblPitanje.getText()=="11"){
+		 			if(rbrPitanja==11){
 						upisiSe();
 						return;
 					}
@@ -205,7 +209,7 @@ public class Kviz extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 					rbrPitanja++;
 					osveziRezultat();
-		 			if(lblPitanje.getText()=="11"){
+		 			if(rbrPitanja==11){
 						upisiSe();
 						return;
 					}
@@ -230,6 +234,16 @@ public class Kviz extends JFrame {
 		 panel_2 = new JPanel();
 		panel_1.add(panel_2, "name_169688616700768");
 		panel_2.setLayout(null);
+		
+		JButton btnSacuvajRezultat = new JButton("sacuvaj rezultat");
+		btnSacuvajRezultat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+//				rangLista.setVisible(true);
+			}
+		});
+		btnSacuvajRezultat.setBounds(205, 148, 146, 23);
+		panel_2.add(btnSacuvajRezultat);
 		
 		lblCestitamo = new JLabel("Cestitamo!");
 		lblCestitamo.setFont(new Font("Bradley Hand ITC", Font.BOLD, 34));
@@ -268,8 +282,9 @@ public class Kviz extends JFrame {
 		
 	}
 	public void upisiSe() {
-		panel_2.setVisible(true);
 		panel_3.setVisible(false);
+		panel_2.setVisible(true);
+		
 		
 	}
 }

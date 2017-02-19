@@ -22,6 +22,8 @@ import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JTextArea;
+import java.awt.Font;
 
 public class Austrija extends JFrame {
 
@@ -33,9 +35,11 @@ public class Austrija extends JFrame {
 	private JPanel panel2;
 	private JPanel panel3;
 	private JLabel label;
-	private JLabel lblDsfsdfsdfsdfsf;
+	private JLabel lblpozadina;
 	private JButton btnNazad;
 	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblGrad;
 
 	/**
 	 * Create the frame.
@@ -90,7 +94,7 @@ public class Austrija extends JFrame {
 		btn1.setIcon(new ImageIcon(Srbija.class.getResource("/slike/one.png")));
 		panel.add(btn1);
 		btn1.setEnabled(false);
-		 btn2 = new JButton("Glavni grad");
+		 btn2 = new JButton("Zanimljivosti");
 		 btn2.setBackground(Color.WHITE);
 		btn2.setIcon(new ImageIcon(Srbija.class.getResource("/slike/two.png")));
 		btn2.addActionListener(new ActionListener() {
@@ -129,6 +133,11 @@ public class Austrija extends JFrame {
 		parentPanel.add(panel1, "name_519136036181722");
 		panel1.setLayout(null);
 		
+		lblGrad = new JLabel("Glavni grad Austrije je Bec.");
+		lblGrad.setFont(new Font("Bradley Hand ITC", Font.BOLD, 26));
+		lblGrad.setBounds(10, 23, 454, 63);
+		panel1.add(lblGrad);
+		
 		label = new JLabel("");
 		label.setBounds(-13, -35, 500, 490);
 		label.setIcon(new ImageIcon(Austrija.class.getResource("/zemlje/Austrija.png")));
@@ -138,10 +147,15 @@ public class Austrija extends JFrame {
 		parentPanel.add(panel2, "name_519142343888746");
 		panel2.setLayout(null);
 		
-		lblDsfsdfsdfsdfsf = new JLabel("");
-		lblDsfsdfsdfsdfsf.setBounds(0, -31, 474, 474);
-		lblDsfsdfsdfsdfsf.setIcon(new ImageIcon(Austrija.class.getResource("/gradovi/bec.png")));
-		panel2.add(lblDsfsdfsdfsdfsf);
+		lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(Austrija.class.getResource("/slike/zanimljivosti/Austrija.png")));
+		lblNewLabel_1.setBounds(0, 0, 474, 443);
+		panel2.add(lblNewLabel_1);
+		
+		lblpozadina = new JLabel("");
+		lblpozadina.setBounds(0, -31, 474, 474);
+		lblpozadina.setIcon(new ImageIcon(Austrija.class.getResource("/gradovi/bec.png")));
+		panel2.add(lblpozadina);
 		
 		panel3 = new JPanel();
 		parentPanel.add(panel3, "name_519148990046526");
@@ -150,7 +164,4 @@ public class Austrija extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(Austrija.class.getResource("/slike/zastave/austrija.png")));
 		panel3.add(lblNewLabel);
 	}
-	
-
-	
 }
