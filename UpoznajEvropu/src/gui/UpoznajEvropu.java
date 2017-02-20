@@ -50,6 +50,7 @@ public class UpoznajEvropu extends JFrame {
 	 * Create the frame.
 	 */
 	public UpoznajEvropu() {
+		setResizable(false);
 		setTitle("Upoznaj Evropu");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 455);

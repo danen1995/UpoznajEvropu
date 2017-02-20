@@ -12,10 +12,14 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
+import gui.models.RangListaTableModel;
 import kviz.GrupaPitanja;
 import kviz.Pitanje;
+import ucesnici.GrupaUcesnika;
+import ucesnici.Ucesnik;
 
 
 public class GUIKontroler extends JFrame {
@@ -23,6 +27,8 @@ public class GUIKontroler extends JFrame {
 	private JPanel contentPane;
 	private static Pocetna glavniProzor;
 	public static GrupaPitanja grupa;
+	public static GrupaUcesnika grupaUcesnika;
+	public static RangLista prikaz;
 	/**
 	 * Launch the application.
 	 */
@@ -32,6 +38,8 @@ public class GUIKontroler extends JFrame {
 			public void run() {
 				try {
 					grupa = new GrupaPitanja();
+					grupaUcesnika = new GrupaUcesnika();
+					prikaz = new RangLista();
 					glavniProzor = new Pocetna();
 					glavniProzor.setVisible(true);
 					glavniProzor.setLocationRelativeTo(null);
@@ -43,7 +51,6 @@ public class GUIKontroler extends JFrame {
 			}
 		});
 		ucitajTXTFajl();
-		
 		
 	}
 
@@ -104,6 +111,7 @@ public class GUIKontroler extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 	}
+
 	public static void ugasiAplikaciju() {
 		int opcija = JOptionPane.showConfirmDialog(null, "Da li zelite da zatvorite program?",
 				"Zatvaranje aplikacije", JOptionPane.YES_NO_OPTION);
@@ -113,6 +121,7 @@ public class GUIKontroler extends JFrame {
 		
 		}
 	}
+
 	public static LinkedList<Pitanje> vratiPitanja(){
 		return grupa.getPitanja();
 	}
@@ -121,5 +130,40 @@ public class GUIKontroler extends JFrame {
 	    Random rand = new Random();
 	    int randomNum = rand.nextInt((grupa.getPitanja().size()-1 - 0) + 1) + 0;
 	    return randomNum;
+	}
+	
+	public static void osveziTabelu(JTable table){
+		RangListaTableModel model = (RangListaTableModel) table.getModel();
+		model.ucitajUcesnike(GUIKontroler.vratiSveUcesnike());
+	}
+
+	public static LinkedList<Ucesnik> vratiSveUcesnike() {
+		return grupaUcesnika.vratiSveUcesnike();
+	}
+
+	public static void unesiUcesnika(String ime, int brojPoena){
+		try{
+			Ucesnik u = new Ucesnik(ime, brojPoena);
+			grupaUcesnika.unesiUcesnika(u);
+			osveziTabelu(prikaz.getTable());
+		}catch(Exception e1){
+			JOptionPane.showMessageDialog(null, "Proveri formu "+ e1.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
+		}
+		
+	}
+	public static void ucitajIzFajla(){
+		try {
+			grupaUcesnika.ucitajIzFajlaDeserijalizacijom();
+			osveziTabelu(prikaz.getTable());
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Greskicica", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	public static void otvoriRangListu() {
+		RangLista prikaz = new RangLista();
+		prikaz.setVisible(true);
+		prikaz.setLocationRelativeTo(null);
+		osveziTabelu(prikaz.getTable());
+		prikaz.setTitle("Prikaz ucesnika");
 	}
 }

@@ -1,6 +1,8 @@
 package ucesnici;
 
-public class Ucesnik {
+import java.io.Serializable;
+
+public class Ucesnik implements Serializable{
 
 	private String ime;
 	private int brPoena;

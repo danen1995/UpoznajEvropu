@@ -13,6 +13,7 @@ import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -32,12 +33,17 @@ public class Kviz extends JFrame {
 	private JLabel lblRezultat;
 	private JLabel lblrbrPitanja;
 	private JLabel label;
-	private JTextField textField;
+	private JTextField textFieldIme;
 	private JLabel lblCestitamo;
 	JPanel panel_2;
 	JPanel panel_3;
-//	RangLista rangLista = new RangLista();
+	RangLista rangLista = new RangLista();
+	private JPanel panel_4;
+	private JLabel lblNewLabel_1;
+	private JLabel label_2;
+	private JLabel lblMorateJosDa;
 	public Kviz() {
+		setResizable(false);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -45,8 +51,8 @@ public class Kviz extends JFrame {
 				rbrPitanja = 1;
 				osveziRezultat();
 				osveziRbrPitanja();
-				panel_3.setVisible(true);
 				panel_2.setVisible(false);
+				panel_4.setVisible(false);
 			}
 		});
 		
@@ -62,9 +68,11 @@ public class Kviz extends JFrame {
 		contentPane.add(panel, BorderLayout.SOUTH);
 		
 		lblBrojPoena = new JLabel("Broj poena:");
+		lblBrojPoena.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 15));
 		panel.add(lblBrojPoena);
 		
 		lblRezultat = new JLabel("");
+		lblRezultat.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 15));
 		panel.add(lblRezultat);
 		
 		JPanel panel_1 = new JPanel();
@@ -76,7 +84,7 @@ public class Kviz extends JFrame {
 		panel_3.setLayout(null);
 		
 		lblPitanje = new JLabel("PITANJE");
-		lblPitanje.setBounds(50, 21, 364, 39);
+		lblPitanje.setBounds(30, 21, 384, 39);
 		panel_3.add(lblPitanje);
 		
 		 btna = new JButton("");
@@ -86,6 +94,7 @@ public class Kviz extends JFrame {
 		 			rezultat++;
 		 			rbrPitanja++;
 		 			osveziRezultat();
+		 			JOptionPane.showMessageDialog(null, "Tacan odgovor!");
 					if(rbrPitanja==11){
 						upisiSe();
 						return;
@@ -96,7 +105,7 @@ public class Kviz extends JFrame {
 		 			rezultat--;
 		 			rbrPitanja++;
 		 			osveziRezultat();
-		 			
+		 			JOptionPane.showMessageDialog(null, "Tacan odgovor je "+ tacanOdgovor);
 		 			if(rbrPitanja==11){
 						upisiSe();
 						return;
@@ -117,6 +126,7 @@ public class Kviz extends JFrame {
 		 			rezultat++;
 		 			rbrPitanja++;
 		 			osveziRezultat();
+		 			JOptionPane.showMessageDialog(null, "Tacan odgovor!");
 					if(rbrPitanja==11){
 						upisiSe();
 						return;
@@ -127,7 +137,7 @@ public class Kviz extends JFrame {
 		 			rezultat--;
 		 			rbrPitanja++;
 		 			osveziRezultat();
-		 			
+		 			JOptionPane.showMessageDialog(null, "Tacan odgovor je "+ tacanOdgovor);
 		 			if(rbrPitanja==11){
 						upisiSe();
 						return;
@@ -147,6 +157,7 @@ public class Kviz extends JFrame {
 		 			rezultat++;
 		 			rbrPitanja++;
 		 			osveziRezultat();
+		 			JOptionPane.showMessageDialog(null, "Tacan odgovor!");
 					if(rbrPitanja==11){
 						upisiSe();
 						return;
@@ -157,7 +168,7 @@ public class Kviz extends JFrame {
 		 			rezultat--;
 		 			rbrPitanja++;
 		 			osveziRezultat();
-		 			
+		 			JOptionPane.showMessageDialog(null, "Tacan odgovor je "+ tacanOdgovor);
 		 			if(rbrPitanja==11){
 						upisiSe();
 						return;
@@ -177,6 +188,7 @@ public class Kviz extends JFrame {
 		 			rezultat++;
 		 			rbrPitanja++;
 		 			osveziRezultat();
+		 			JOptionPane.showMessageDialog(null, "Tacan odgovor!");
 					if(rbrPitanja==11){
 						upisiSe();
 						return;
@@ -187,7 +199,7 @@ public class Kviz extends JFrame {
 		 			rezultat--;
 		 			rbrPitanja++;
 		 			osveziRezultat();
-		 			
+		 			JOptionPane.showMessageDialog(null, "Tacan odgovor je "+ tacanOdgovor);
 		 			if(rbrPitanja==11){
 						upisiSe();
 						return;
@@ -209,6 +221,7 @@ public class Kviz extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 					rbrPitanja++;
 					osveziRezultat();
+					
 		 			if(rbrPitanja==11){
 						upisiSe();
 						return;
@@ -238,31 +251,63 @@ public class Kviz extends JFrame {
 		JButton btnSacuvajRezultat = new JButton("sacuvaj rezultat");
 		btnSacuvajRezultat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-//				rangLista.setVisible(true);
+				GUIKontroler.otvoriRangListu();
+				GUIKontroler.unesiUcesnika(textFieldIme.getText(), rezultat);
+				rezultat = 0;
+				rbrPitanja = 1;
+				osveziRezultat();
+				osveziRbrPitanja();
+				panel_2.setVisible(false);
+				panel_3.setVisible(true);
+				setVisible(false);
+			
 			}
 		});
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(Kviz.class.getResource("/slike/rsz_happysmiley.png")));
+		label_1.setBounds(9, 0, 100, 105);
+		panel_2.add(label_1);
 		btnSacuvajRezultat.setBounds(205, 148, 146, 23);
 		panel_2.add(btnSacuvajRezultat);
 		
 		lblCestitamo = new JLabel("Cestitamo!");
 		lblCestitamo.setFont(new Font("Bradley Hand ITC", Font.BOLD, 34));
-		lblCestitamo.setBounds(136, 11, 200, 51);
+		lblCestitamo.setBounds(214, 0, 200, 51);
 		panel_2.add(lblCestitamo);
 		
 		JLabel lblUnesiteIme = new JLabel("Unesite ime : ");
 		lblUnesiteIme.setBounds(119, 98, 76, 14);
 		panel_2.add(lblUnesiteIme);
 		
-		textField = new JTextField();
-		textField.setBounds(205, 95, 146, 20);
-		panel_2.add(textField);
-		textField.setColumns(10);
+		textFieldIme = new JTextField();
+		textFieldIme.setBounds(205, 95, 146, 20);
+		panel_2.add(textFieldIme);
+		textFieldIme.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Kviz.class.getResource("/slike/16809584_10203262022188293_1877923371_n.png")));
+		lblNewLabel.setIcon(new ImageIcon(Kviz.class.getResource("/slike/rsz_wallpaper.jpg")));
 		lblNewLabel.setBounds(0, -31, 424, 258);
 		panel_2.add(lblNewLabel);
+		
+		panel_4 = new JPanel();
+		panel_1.add(panel_4, "name_269320580099156");
+		panel_4.setLayout(null);
+		
+		label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(Kviz.class.getResource("/slike/rsz_sadsmiley.png")));
+		label_2.setBounds(0, 5, 100, 100);
+		panel_4.add(label_2);
+		
+		lblMorateJosDa = new JLabel("Vise srece drugi put");
+		lblMorateJosDa.setFont(new Font("Bradley Hand ITC", Font.BOLD, 34));
+		lblMorateJosDa.setBounds(50, 116, 342, 78);
+		panel_4.add(lblMorateJosDa);
+		
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(Kviz.class.getResource("/slike/rsz_wallpaper.jpg")));
+		lblNewLabel_1.setBounds(0, 5, 424, 215);
+		panel_4.add(lblNewLabel_1);
 		
 	}
 	public void nasumicnoPitanje(){
@@ -283,6 +328,9 @@ public class Kviz extends JFrame {
 	}
 	public void upisiSe() {
 		panel_3.setVisible(false);
+		if(rezultat < 5){
+			panel_4.setVisible(true);
+		}else
 		panel_2.setVisible(true);
 		
 		

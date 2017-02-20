@@ -10,7 +10,7 @@ import ucesnici.Ucesnik;
 
 public class RangListaTableModel extends AbstractTableModel {
 	
-	private final String[] kolone = new String[] {"Redni broj","Ime","Poeni"};
+	private final String[] kolone = new String[] {"Rang","Ime","Poeni"};
 	
 	private LinkedList<Ucesnik> ucesnici ;
 	
@@ -38,7 +38,7 @@ public class RangListaTableModel extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Ucesnik u = ucesnici.get(rowIndex);
 		switch (columnIndex) {
-		case 0: return rowIndex;
+		case 0: return rowIndex+1;
 		case 1: return u.getIme();
 		case 2: return u.getBrPoena();
 		default: return "NN";

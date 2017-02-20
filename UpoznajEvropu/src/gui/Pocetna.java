@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.Dimension;
@@ -21,6 +22,7 @@ public class Pocetna extends JFrame {
 	private JPanel contentPane;
 	UpoznajEvropu upoznajEvropu = new UpoznajEvropu();
 	Kviz kviz = new Kviz();
+	RangLista rangLista = new RangLista();
 	/**
 	 * Launch the application.
 	 */
@@ -30,6 +32,8 @@ public class Pocetna extends JFrame {
 	 * Create the frame.
 	 */
 	public Pocetna() {
+		setResizable(false);
+		GUIKontroler.ucitajIzFajla();
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -83,6 +87,11 @@ public class Pocetna extends JFrame {
 		panel.add(button);
 		
 		JButton button_1 = new JButton("");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUIKontroler.otvoriRangListu();
+			}
+		});
 		button_1.setIcon(new ImageIcon(Pocetna.class.getResource("/slike/9-128.png")));
 		button_1.setPreferredSize(new Dimension(128, 150));
 		button_1.setMinimumSize(new Dimension(109, 200));

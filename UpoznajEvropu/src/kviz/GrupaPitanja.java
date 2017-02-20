@@ -6,6 +6,8 @@ import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.Random;
 
+import ucesnici.Ucesnik;
+
 public class GrupaPitanja {
 	private LinkedList<Pitanje> pitanja = new LinkedList<>();
 
@@ -28,6 +30,10 @@ public class GrupaPitanja {
 	public int ukupanBrojPitanja(){
 		return pitanja.size();
 	}
+
+	
+
+	
 
 
 }
